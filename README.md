@@ -1,2 +1,0 @@
-# pirate-search
-Piratebay search 
