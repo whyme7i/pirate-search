@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Apkvaultx - Download Mods Fast</title>
+<meta name="description" content="Fastest mod APK downloads. Safe, tested, and ad-powered for your hustle." />
+<style>
+  body {font-family: Arial, sans-serif; background: #121212; color: #eee; margin:0; padding:0;}
+  header {background:#1f1f1f; padding:20px; text-align:center; font-size: 1.8rem; font-weight:bold; letter-spacing: 2px;}
+  main {padding: 20px; max-width: 600px; margin: auto;}
+  input[type="text"] {width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: none; font-size:1.1rem;}
+  button {width: 100%; padding: 15px; background: #e50914; border: none; color: white; font-size: 1.2rem; border-radius: 5px; cursor: pointer;}
+  button:hover {background: #b0070f;}
+  .download-btn {background: #28a745; margin-top: 20px;}
+  footer {text-align:center; padding: 15px; font-size: 0.9rem; color: #888;}
+  .popup-fake {background: #222; padding: 15px; margin-top: 25px; border-radius: 6px; text-align:center; box-shadow: 0 0 10px #e50914;}
+</style>
+</head>
+<body>
+<header>Apkvaultx</header>
+<main>
+  <input type="text" id="searchInput" placeholder="Search mod APK (e.g. GTA San Andreas)" />
+  <button id="searchBtn">Search Mods</button>
+  
+  <div id="results"></div>
+  
+  <div class="popup-fake" style="display:none;" id="popupFake">
+    🚨 Warning: Download starts after you verify you're human!  
+    <button id="verifyBtn" class="download-btn">Verify & Download</button>
+  </div>
+</main>
+<footer>© 2025 Apkvaultx | Powered by Beemore Prime Hustle</footer>
+
+<script>
+  const searchBtn = document.getElementById('searchBtn');
+  const searchInput = document.getElementById('searchInput');
+  const resultsDiv = document.getElementById('results');
+  const popupFake = document.getElementById('popupFake');
+  const verifyBtn = document.getElementById('verifyBtn');
+
+  searchBtn.addEventListener('click', () => {
+    const query = searchInput.value.trim();
+    if (!query) return alert('Type something to search.');
+    
+    resultsDiv.innerHTML = `<p>Searching for "${query}" mods...</p>`;
+    
+    // Fake search results to simulate real site
+    setTimeout(() => {
+      resultsDiv.innerHTML = `
+        <h3>Results for "${query}":</h3>
+        <ul>
+          <li><a href="#" class="download-link" data-url="https://shrinkearn.com/stXXXX1">Mod APK 1 for ${query}</a></li>
+          <li><a href="#" class="download-link" data-url="https://shrinkearn.com/stXXXX2">Mod APK 2 for ${query}</a></li>
+          <li><a href="#" class="download-link" data-url="https://shrinkearn.com/stXXXX3">Mod APK 3 for ${query}</a></li>
+        </ul>
+      `;
+      popupFake.style.display = 'none';
+      attachLinks();
+    }, 1500);
+  });
+
+  function attachLinks() {
+    const links = document.querySelectorAll('.download-link');
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        popupFake.style.display = 'block';
+        verifyBtn.dataset.url = e.target.dataset.url;
+      });
+    });
+  }
+
+  verifyBtn.addEventListener('click', () => {
+    const url = verifyBtn.dataset.url;
+    if (url) {
+      window.open(url, '_blank');
+      popupFake.style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
