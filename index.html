@@ -1,66 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>PirateBay Search Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apkvaultx | Download Mod APKs Free</title>
+  <meta name="description" content="Free modded APKs: games, tools, and hacks. Safe & fast. Updated daily.">
   <style>
     body {
+      background: #111;
       font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #fff;
-      text-align: center;
-      padding: 40px;
+      color: #eee;
+      margin: 0;
+      padding: 0;
     }
-    input {
-      padding: 10px;
-      width: 80%;
-      font-size: 18px;
+    header {
+      background: #e50914;
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+    }
+    main {
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1rem;
       border: none;
       border-radius: 5px;
+      margin-bottom: 10px;
     }
     button {
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: #00ff7f;
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1rem;
       border: none;
       border-radius: 5px;
+      background: #28a745;
+      color: white;
       cursor: pointer;
-      margin-top: 10px;
     }
-    p {
-      color: #ccc;
-      font-size: 16px;
-      max-width: 700px;
-      margin: 30px auto 0;
+    button:hover {
+      background: #218838;
+    }
+    .results {
+      margin-top: 20px;
+    }
+    .result {
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .popup-fake {
+      background: #222;
+      padding: 15px;
+      margin-top: 25px;
+      border-radius: 6px;
+      text-align: center;
+      box-shadow: 0 0 10px #e50914;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <h1>🔥 PirateBay Search Engine 🔥</h1>
+  <header>APKVAULTX</header>
+  <main>
+    <input type="text" id="searchInput" placeholder="Search Mod APKs (e.g., GTA, Spotify, Minecraft)" />
+    <button onclick="searchMods()">Search</button>
 
-  <form id="searchForm" target="_blank">
-    <input type="text" id="searchQuery" placeholder="Search torrents..." required>
-    <br>
-    <button type="submit">Search</button>
-  </form>
+    <div class="results" id="results"></div>
 
-  <p>
-    🔍 Search over 10 million torrents — movies, games, cracked software, anime, music and more.<br><br>
-    ✅ Type anything above and hit search.<br>
-    Example: <i>GTA V, Photoshop 2025, John Wick 4, Naruto Shippuden</i><br><br>
-    ⚠️ Use a VPN for full safety.<br>
-    💥 Powered by freedom. Built for rebels.
-  </p>
+    <div class="popup-fake" id="popupBox" style="display:none;">
+      🔐 Human Verification Required<br><br>
+      <button onclick="redirectToLock()">Click to Verify & Download</button>
+    </div>
+  </main>
+  <footer>© 2025 APKVaultx | Hustle Powered</footer>
 
   <script>
-    document.getElementById('searchForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const query = document.getElementById('searchQuery').value.trim();
-      if (query) {
-        const searchURL = 'https://thepiratebay.org/search/' + encodeURIComponent(query);
-        window.open(searchURL, '_blank');
+    function searchMods() {
+      const query = document.getElementById("searchInput").value.trim();
+      const resultsBox = document.getElementById("results");
+      const popupBox = document.getElementById("popupBox");
+
+      if (!query) {
+        alert("Enter something to search.");
+        return;
       }
-    });
+
+      resultsBox.innerHTML = `
+        <div class="result">🎮 <strong>${query} Mod v1.0.9</strong><br>
+        Features: Unlimited Money, No Ads<br>
+        <button onclick="showPopup('https://shrinkearn.com/stXXXX1')">Download</button>
+        </div>
+        <div class="result">🚀 <strong>${query} Hack PRO</strong><br>
+        Features: All unlocked, Speed boost<br>
+        <button onclick="showPopup('https://shrinkearn.com/stXXXX2')">Download</button>
+        </div>
+      `;
+    }
+
+    let redirectUrl = "";
+
+    function showPopup(url) {
+      redirectUrl = url;
+      document.getElementById("popupBox").style.display = "block";
+    }
+
+    function redirectToLock() {
+      if (redirectUrl) {
+        window.open(redirectUrl, "_blank");
+        document.getElementById("popupBox").style.display = "none";
+      }
+    }
   </script>
 </body>
 </html>
